@@ -1,0 +1,104 @@
+# ============================================
+# TikTok Affiliate AI Studio - Git Ignore
+# ============================================
+
+# --- 1. Bảo mật: API Keys & Secrets (Tuyệt đối không đẩy lên GitHub) ---
+output/api_keys.json
+output/*_keys*.json
+.env
+.env.*
+*.env
+secrets.json
+
+# --- 2. Môi trường ảo Python ---
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# --- 3. Python cache & build ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- 4. File nhị phân biên dịch (Swift / C / Native) ---
+video_renderer
+adam_pitch
+frame_inspect
+*.o
+*.obj
+*.dylib
+*.dSYM/
+
+# --- 5. File media dung lượng lớn đã crawl & đã render ---
+# Toàn bộ video/audio render trong thư mục output (chỉ giữ lại .gitkeep)
+output/*/
+output/*.json
+output/*.mp4
+output/*.m4a
+output/*.txt
+!output/.gitkeep
+
+# Toàn bộ video & ảnh tải từ mạng trong assets/real (chỉ giữ lại .gitkeep)
+assets/real/*.mp4
+assets/real/*.m4a
+assets/real/*.wav
+assets/real/*.mp3
+assets/real/*.aac
+assets/real/custom_*
+assets/real/upload_*
+assets/real/stand_video*
+assets/real/case_video*
+assets/real/fan_video*
+assets/real/mic_video*
+assets/real/bottle_video*
+!assets/real/.gitkeep
+
+# File media tự do phát sinh
+*.mp4
+*.m4a
+*.wav
+*.mp3
+*.aac
+
+# --- 6. Hệ điều hành & Editor rác ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Logs & Temp
+*.log
+tmp/
+temp/
+scratch/

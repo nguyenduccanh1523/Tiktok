@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Affiliate AI Studio — Tạo 5 Video Khác Nhau Mỗi Sản Phẩm &amp; Lưu Theo Thư Mục Riêng</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- HEADER GỌN GÀNG -->
+    <header class="top-bar">
+      <div class="brand">
+        <span class="live-dot"></span>
+        <h1>TikTok Affiliate Video AI</h1>
+        <span id="engine-status-pill" class="tag-pill">🎬 Video Sạch 100% (Đã cắt bỏ góc thừa/logo) • 5 Video Khác Nhau / Sản Phẩm</span>
+      </div>
+      <div class="top-actions">
+        <button type="button" id="btn-open-keys-modal" class="btn btn-sub">
+          🔑 Cài Đặt API Key
+        </button>
+        <button type="button" id="btn-open-crawl-modal" class="btn btn-outline">
+          🔗 + Dán Link TikTok / Tên Sản Phẩm Để Tự Crawl
+        </button>
+      </div>
+    </header>
+
+    <!-- BỐ CỤC 2 PHẦN: TRÁI (CHỌN SP & TẠO 5 BIẾN THỂ) — PHẢI (XEM VIDEO MP4 THẬT & TẢI VỀ) -->
+    <div class="studio-grid">
+      <main class="workflow-column">
+        <!-- BƯỚC 1: CHỌN SẢN PHẨM ĐANG BÁN CHẠY -->
+        <section class="step-card" aria-labelledby="step1-title">
+          <div class="step-header">
+            <span class="step-badge">BƯỚC 1</span>
+            <h2 id="step1-title">Chọn Sản Phẩm Bán Chạy (Mỗi sản phẩm lưu 1 thư mục riêng)</h2>
+          </div>
+          <div id="product-strip" class="product-grid" role="list"></div>
+        </section>
+
+        <!-- BƯỚC 2: CHỌN DẠNG VIDEO & 5 BIẾN THỂ KHÁC NHAU (CHỐNG TRÙNG LẶP NHÀM CHÁN) -->
+        <section class="step-card" aria-labelledby="step2-title">
+          <div class="step-header">
+            <span class="step-badge">BƯỚC 2</span>
+            <h2 id="step2-title">Chọn 1 Trong 5 Biến Thể Video Khác Nhau &amp; Bộ Ảnh Thực Tế</h2>
+            <span class="step-hint">Mỗi biến thể có kịch bản, thứ tự cảnh và góc máy hoàn toàn khác nhau</span>
+          </div>
+
+          <div class="variant-toolbar">
+            <div id="variant-tabs" class="variant-tabs" role="tablist" aria-label="Chọn 1 trong 5 biến thể video"></div>
+
+            <div class="visual-mode-row">
+              <div class="form-group mode-select-group">
+                <label for="visual-mode-select">Kiểu dựng video:</label>
+                <select id="visual-mode-select" name="visual_mode" class="select-control">
+                  <option value="real_video" selected>🎥 100% Video review thực tế (Liền mạch từ đầu đến cuối, không chèn ảnh)</option>
+                  <option value="photos_motion">🖼️ Dựng từ ảnh tĩnh (Chuyển động 3D - Chỉ khi không có video)</option>
+                </select>
+              </div>
+
+              <button type="button" id="btn-batch-5" class="btn btn-outline btn-batch">
+                ⚡ Tạo Trọn Bộ 5 Video Khác Nhau (100% Video Review Thật)
+              </button>
+            </div>
+          </div>
+
+          <div id="real-photos-grid" class="photos-grid"></div>
+        </section>
+
+        <!-- BƯỚC 3: LỜI THOẠI TỰ ĐỘNG CHO BIẾN THỂ ĐANG CHỌN -->
+        <section class="step-card" aria-labelledby="step3-title">
+          <div class="step-header">
+            <span class="step-badge">BƯỚC 3</span>
+            <h2 id="step3-title">Kịch Bản AI Tự Viết Cho Biến Thể Này (Bấm nút để đổi sang biến thể mới)</h2>
+          </div>
+
+          <form id="render-form" action="/api/render-mp4" method="POST" novalidate>
+            <div id="scenes-script-list" class="script-list"></div>
+
+            <div class="form-group">
+              <label for="caption-input">Caption &amp; Hashtag gợi ý (Copy riêng khi đăng bài):</label>
+              <input type="text" id="caption-input" name="caption" required>
+            </div>
+
+            <div class="render-action-row">
+              <button type="submit" id="btn-render-mp4" class="btn btn-primary btn-lg">
+                🎬 Tạo Video Này &amp; Tự Động Đổi Sang Biến Thể Mới
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <!-- CỘT PHẢI: KHUNG XEM VIDEO MP4 THẬT & DANH SÁCH 5 VIDEO TRONG THƯ MỤC SẢN PHẨM -->
+      <aside class="player-column" aria-labelledby="player-title">
+        <div class="player-card">
+          <div class="player-top">
+            <div>
+              <span class="step-badge badge-green">TRÌNH PHÁT VIDEO MP4 THẬT</span>
+              <h2 id="player-title">Xem Trước &amp; Chuyển Đổi 5 Video</h2>
+            </div>
+            <span id="video-meta-badge" class="meta-pill">1080×1920 • Clean MP4</span>
+          </div>
+
+          <!-- Thanh chọn nhanh các video đã tạo của sản phẩm này -->
+          <div id="saved-variants-strip" class="saved-variants-strip" aria-label="Danh sách các video trong thư mục sản phẩm"></div>
+
+          <div class="video-stage">
+            <video
+              id="real-video-player"
+              controls
+              autoplay
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div id="rendering-overlay" class="rendering-overlay" hidden aria-live="polite">
+              <div class="loader"></div>
+              <strong id="rendering-status-text">Đang dựng Video MP4 mới (không sub/không góc thừa)...</strong>
+              <small>Tự động lưu vào thư mục riêng của sản phẩm</small>
+            </div>
+          </div>
+
+          <div class="download-actions">
+            <a id="btn-download-mp4" href="#" download class="btn btn-success btn-save-main">
+              ⬇ LƯU VIDEO ĐANG XEM VỀ MÁY
+            </a>
+
+            <div class="sub-downloads">
+              <a id="btn-download-voice" href="#" download class="btn btn-sub">🔊 Tải Giọng Đọc (.m4a)</a>
+              <a id="btn-download-script" href="#" download class="btn btn-sub">📄 Tải Kịch Bản (.txt)</a>
+            </div>
+
+            <div id="saved-path-box" class="saved-path-box">
+              📁 Thư mục riêng của sản phẩm này:<br>
+              <code id="saved-folder-path">./output/</code>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- MODAL CÀI ĐẶT API KEY -->
+  <dialog id="keys-dialog" class="crawl-modal" aria-labelledby="keys-modal-title">
+    <form id="keys-form" action="/api/save-keys" method="POST" novalidate>
+      <div class="modal-head">
+        <h2 id="keys-modal-title">🔑 Cài Đặt API Key (Google Gemini Pro &amp; ElevenLabs Adam)</h2>
+        <button type="button" id="btn-close-keys" class="btn-icon" aria-label="Đóng">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="gemini-key-input">1. Google Gemini API Key (Đã kích hoạt):</label>
+          <input type="password" id="gemini-key-input" name="gemini_api_key" autocomplete="off">
+          <span class="field-hint">
+            Dùng để tự động bóc tách Link sản phẩm, tự viết 5 kịch bản khác nhau và đọc giọng Nam trầm <strong>Gemini TTS (Charon)</strong>.
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="elevenlabs-key-input">2. ElevenLabs API Key (Tùy chọn):</label>
+          <input type="password" id="elevenlabs-key-input" name="elevenlabs_api_key" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="modal-foot">
+        <button type="button" id="btn-cancel-keys" class="btn btn-sub">Đóng</button>
+        <button type="submit" id="btn-save-keys" class="btn btn-primary">
+          💾 Lưu API Key
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- MODAL CRAWL SIÊU GỌN: CHỈ CẦN DÁN 1 LINK TIKTOK/SHOPEE HOẶC TÊN SẢN PHẨM -->
+  <dialog id="crawl-dialog" class="crawl-modal" aria-labelledby="modal-title">
+    <form id="crawl-form" action="/api/crawl-new-product" method="POST" novalidate>
+      <div class="modal-head">
+        <h2 id="modal-title">🔗 Dán Link Sản Phẩm TikTok / Shopee Hoặc Tên Sản Phẩm</h2>
+        <button type="button" id="btn-close-modal" class="btn-icon" aria-label="Đóng">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="crawl-query">Chỉ cần dán Link hoặc gõ Tên sản phẩm (AI tự lo toàn bộ thông số &amp; kịch bản):</label>
+          <input type="text" id="crawl-query" name="query" required minlength="3" aria-describedby="crawl-error">
+          <span class="field-hint">
+            Ví dụ: Dán link <code>https://vt.tiktok.com/...</code>, link Shopee, hoặc gõ ngắn gọn <em>"Bàn chải điện sóng âm Xiaomi"</em>. Hệ thống sẽ tự động lấy ảnh thật, tải video thực tế, tự viết 5 kịch bản và lưu vào thư mục riêng!
+          </span>
+          <span id="crawl-error" class="error-text" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="modal-foot">
+        <button type="button" id="btn-cancel-modal" class="btn btn-sub">Hủy</button>
+        <button type="submit" id="btn-submit-crawl" class="btn btn-primary">
+          ⚡ Tự Động Crawl &amp; Tạo Video Ngay
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>

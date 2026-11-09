@@ -1,0 +1,24 @@
+# ============================================================
+# TikTok Affiliate AI Studio - Danh Sách Thư Viện Cần Thiết
+# ============================================================
+
+# Công cụ tải video review thực tế chất lượng cao từ YouTube Shorts
+yt-dlp>=2025.1.0
+
+# ------------------------------------------------------------
+# Lưu ý quan trọng khi cài đặt và chạy dự án:
+# ------------------------------------------------------------
+# 1. Các module server web, HTTP API, phân tích dữ liệu, bóc tách HTML,
+#    kết nối Gemini AI và ElevenLabs hoàn toàn sử dụng thư viện chuẩn của Python 3:
+#    (urllib, json, subprocess, ssl, http.server, re, pathlib, typing, etc.)
+#    Do đó không cần cài thêm các gói cồng kềnh như requests, flask hay fastapi.
+#
+# 2. Để biên dịch 2 công cụ render video tăng tốc GPU phần cứng trên macOS:
+#    Chạy lệnh sau trong Terminal:
+#      swiftc -O render_mp4.swift -o video_renderer
+#      swiftc -O adam_pitch.swift -o adam_pitch
+#
+# 3. Chạy server chính:
+#      python3 app.py
+#    Sau đó mở trình duyệt tại http://127.0.0.1:8088
+# ============================================================

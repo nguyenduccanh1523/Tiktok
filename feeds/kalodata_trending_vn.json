@@ -1,0 +1,453 @@
+[
+  {
+    "external_id": "KALO-VN-882910",
+    "source": "kalodata_vn",
+    "kalodata_rank": 1,
+    "title": "Ốp Lưng Từ Tính Chống Sốc Viền Đệm Khí Nhám Mờ Kèm Bảo Vệ Camera",
+    "category": "Điện thoại & Phụ kiện",
+    "shop_name": "Phụ Kiện Số Official VN",
+    "price_vnd": 89000,
+    "original_price_vnd": 159000,
+    "sales_7d": 18450,
+    "gmv_7d_vnd": 1642050000,
+    "growth_7d_pct": 84.5,
+    "rating": 4.9,
+    "review_count": 6420,
+    "commission_rate": 18.0,
+    "creator_videos_7d": 142,
+    "metrics_date": "2026-11-07",
+    "affiliate_url": "https://kalodata.com/product/detail?id=KALO-VN-882910",
+    "asset_rights_verified": true,
+    "specifications_verified": true,
+    "affiliate_eligible": true,
+    "verified_specs": [
+      "Mặt lưng PC nhám mờ hạn chế bám vân tay và mồ hôi",
+      "Viền TPU dẻo có 4 góc đệm khí giảm chấn khi va chạm nhẹ",
+      "Gờ viền cụm camera nhô cao 1.5mm và viền màn hình cao 1.2mm",
+      "Vòng nam châm N52 tích hợp hỗ trợ sạc không dây và ví từ tính",
+      "Dành cho các dòng iPhone 13 / 14 / 15 / 16 series"
+    ],
+    "forbidden_claims": [
+      "Không cam kết rơi từ tầng cao không vỡ máy",
+      "Không nói chống nước hoàn toàn cho điện thoại",
+      "Không tự bịa tương thích iPhone 18"
+    ],
+    "image_Gallery": [
+      {
+        "id": "case_main",
+        "label": "Góc 1: Tổng thể mặt lưng nhám mờ & vòng từ tính",
+        "caption_tag": "Thiết kế nhám mờ chống bám vân tay",
+        "theme_color": "#1e293b",
+        "accent_color": "#38bdf8",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.48,
+          "zoom": 1.18
+        },
+        "svg_type": "phone_case_back",
+        "url": "/assets/real/case_1.jpg"
+      },
+      {
+        "id": "case_camera",
+        "label": "Góc 2: Cận cảnh gờ bảo vệ cụm Camera cao 1.5mm",
+        "caption_tag": "Viền Camera nhô cao 1.5mm chống trầy",
+        "theme_color": "#0f172a",
+        "accent_color": "#f43f5e",
+        "focus_zone": {
+          "x": 0.38,
+          "y": 0.35,
+          "zoom": 1.32
+        },
+        "svg_type": "phone_case_camera",
+        "url": "/assets/real/case_2.jpg"
+      },
+      {
+        "id": "case_corner",
+        "label": "Góc 3: Chi tiết 4 góc đệm khí TPU & nút bấm kim loại",
+        "caption_tag": "4 góc đệm khí TPU đàn hồi giảm chấn",
+        "theme_color": "#1e1b4b",
+        "accent_color": "#a855f7",
+        "focus_zone": {
+          "x": 0.65,
+          "y": 0.65,
+          "zoom": 1.28
+        },
+        "svg_type": "phone_case_corner",
+        "url": "/assets/real/case_3.jpg"
+      },
+      {
+        "id": "case_colors",
+        "label": "Góc 4: Bộ 4 màu Titan Tự Nhiên, Đen Nhám, Xanh, Tím",
+        "caption_tag": "4 màu sang trọng - Hoa hồng 18%",
+        "theme_color": "#172554",
+        "accent_color": "#22c55e",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "svg_type": "phone_case_colors",
+        "url": "/assets/real/case_4.jpg"
+      }
+    ]
+  },
+  {
+    "external_id": "KALO-VN-774120",
+    "source": "kalodata_vn",
+    "kalodata_rank": 2,
+    "title": "Quạt Cầm Tay Mini Phản Lực Turbo 100 Cấp Độ Gió Màn Hình LED Pin 4000mAh",
+    "category": "Thiết bị Điện gia dụng nhỏ",
+    "shop_name": "SmartHome Tiện Ích VN",
+    "price_vnd": 195000,
+    "original_price_vnd": 320000,
+    "sales_7d": 14200,
+    "gmv_7d_vnd": 2769000000,
+    "growth_7d_pct": 92.0,
+    "rating": 4.8,
+    "review_count": 4190,
+    "commission_rate": 15.0,
+    "creator_videos_7d": 118,
+    "metrics_date": "2026-11-07",
+    "affiliate_url": "https://kalodata.com/product/detail?id=KALO-VN-774120",
+    "asset_rights_verified": true,
+    "specifications_verified": true,
+    "affiliate_eligible": true,
+    "verified_specs": [
+      "Con lăn điều chỉnh vô cấp từ cấp 1 đến cấp 100 gió",
+      "Màn hình LED kỹ thuật số hiển thị % pin và mức gió hiện tại",
+      "Dung lượng pin 4000mAh, sạc qua cổng Type-C tiện lợi",
+      "Trọng lượng nhỏ gọn 235g, kèm dây đeo cổ tay chống rơi"
+    ],
+    "forbidden_claims": [
+      "Không nói làm lạnh như điều hòa âm độ",
+      "Không cam kết pin dùng liên tục 7 ngày ở mức 100"
+    ],
+    "image_Gallery": [
+      {
+        "id": "fan_main",
+        "label": "Góc 1: Thiết kế quạt phản lực Turbo cầm tay nhỏ gọn",
+        "caption_tag": "Quạt Turbo cầm tay nhỏ gọn 235g",
+        "theme_color": "#0c4a6e",
+        "accent_color": "#38bdf8",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "svg_type": "turbo_fan_main",
+        "url": "/assets/real/fan_1.jpg"
+      },
+      {
+        "id": "fan_led",
+        "label": "Góc 2: Cận cảnh màn hình LED báo % pin và 100 cấp gió",
+        "caption_tag": "Màn hình LED báo % pin & 100 mức gió",
+        "theme_color": "#0f172a",
+        "accent_color": "#22d3ee",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.42,
+          "zoom": 1.35
+        },
+        "svg_type": "turbo_fan_led",
+        "url": "/assets/real/fan_2.jpg"
+      },
+      {
+        "id": "fan_wheel",
+        "label": "Góc 3: Con lăn cuộn điều chỉnh tốc độ gió mượt mà",
+        "caption_tag": "Con lăn tăng giảm gió từ 1 - 100",
+        "theme_color": "#1e293b",
+        "accent_color": "#f59e0b",
+        "focus_zone": {
+          "x": 0.6,
+          "y": 0.55,
+          "zoom": 1.25
+        },
+        "svg_type": "turbo_fan_wheel",
+        "url": "/assets/real/fan_3.jpg"
+      },
+      {
+        "id": "fan_battery",
+        "label": "Góc 4: Cổng sạc nhanh Type-C & Pin 4000mAh",
+        "caption_tag": "Pin 4000mAh sạc Type-C tiện lợi",
+        "theme_color": "#064e3b",
+        "accent_color": "#34d399",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.6,
+          "zoom": 1.18
+        },
+        "svg_type": "turbo_fan_battery",
+        "url": "/assets/real/fan_4.jpg"
+      }
+    ]
+  },
+  {
+    "external_id": "KALO-VN-651092",
+    "source": "kalodata_vn",
+    "kalodata_rank": 3,
+    "title": "Bộ 2 Mic Thu Âm Không Dây Cài Áo Lọc Ồn AI Kèm Hộp Sạc Cho Điện Thoại",
+    "category": "Thiết bị Âm thanh & Quay chụp",
+    "shop_name": "Studio Gear Vietnam",
+    "price_vnd": 259000,
+    "original_price_vnd": 450000,
+    "sales_7d": 9850,
+    "gmv_7d_vnd": 2551150000,
+    "growth_7d_pct": 67.4,
+    "rating": 4.9,
+    "review_count": 3120,
+    "commission_rate": 20.0,
+    "creator_videos_7d": 215,
+    "metrics_date": "2026-11-07",
+    "affiliate_url": "https://kalodata.com/product/detail?id=KALO-VN-651092",
+    "asset_rights_verified": true,
+    "specifications_verified": true,
+    "affiliate_eligible": true,
+    "verified_specs": [
+      "Bộ gồm 2 mic phát cài áo + 1 đầu thu cắm trực tiếp (Plug & Play)",
+      "Chip DSP hỗ trợ giảm tạp âm môi trường xung quanh",
+      "Khoảng cách kết nối ổn định lên tới 20m trong môi trường thoáng",
+      "Hộp sạc đi kèm hiển thị dung lượng pin, tổng thời gian dùng đến 24h"
+    ],
+    "forbidden_claims": [
+      "Không nói chất lượng ngang mic phòng thu tiền triệu",
+      "Không nói thu âm dưới nước"
+    ],
+    "image_Gallery": [
+      {
+        "id": "mic_box",
+        "label": "Góc 1: Hộp sạc kỹ thuật số kèm 2 Mic và 1 Đầu thu",
+        "caption_tag": "Bộ 2 Mic + Hộp sạc báo pin tiện lợi",
+        "theme_color": "#18181b",
+        "accent_color": "#ec4899",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "svg_type": "wireless_mic_box",
+        "url": "/assets/real/mic_1.jpg"
+      },
+      {
+        "id": "mic_clip",
+        "label": "Góc 2: Kẹp cài áo xoay 360 độ & bông lọc gió",
+        "caption_tag": "Kẹp cài áo nhỏ gọn kèm lọc gió",
+        "theme_color": "#1e1b4b",
+        "accent_color": "#818cf8",
+        "focus_zone": {
+          "x": 0.45,
+          "y": 0.45,
+          "zoom": 1.3
+        },
+        "svg_type": "wireless_mic_clip",
+        "url": "/assets/real/mic_2.jpg"
+      },
+      {
+        "id": "mic_receiver",
+        "label": "Góc 3: Đầu thu cắm trực tiếp không cần cài App",
+        "caption_tag": "Cắm là chạy - Không cần cài App",
+        "theme_color": "#0f172a",
+        "accent_color": "#38bdf8",
+        "focus_zone": {
+          "x": 0.55,
+          "y": 0.5,
+          "zoom": 1.25
+        },
+        "svg_type": "wireless_mic_receiver",
+        "url": "/assets/real/mic_3.jpg"
+      },
+      {
+        "id": "mic_dsp",
+        "label": "Góc 4: Chế độ lọc tạp âm DSP & vang Reverb",
+        "caption_tag": "Lọc tạp âm môi trường - Thu tiếng rõ",
+        "theme_color": "#14532d",
+        "accent_color": "#4ade80",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.16
+        },
+        "svg_type": "wireless_mic_dsp",
+        "url": "/assets/real/mic_4.jpg"
+      }
+    ]
+  },
+  {
+    "external_id": "KALO-VN-540219",
+    "source": "kalodata_vn",
+    "kalodata_rank": 4,
+    "title": "Bình Giữ Nhiệt Inox 316 Dung Tích 800ml Nắp Chạm Báo Nhiệt Độ Kèm Ống Hút",
+    "category": "Nhà cửa & Đời sống",
+    "shop_name": "HomeLife Vietnam Official",
+    "price_vnd": 139000,
+    "original_price_vnd": 230000,
+    "sales_7d": 12600,
+    "gmv_7d_vnd": 1751400000,
+    "growth_7d_pct": 53.2,
+    "rating": 4.8,
+    "review_count": 5110,
+    "commission_rate": 16.5,
+    "creator_videos_7d": 96,
+    "metrics_date": "2026-11-07",
+    "affiliate_url": "https://kalodata.com/product/detail?id=KALO-VN-540219",
+    "asset_rights_verified": true,
+    "specifications_verified": true,
+    "affiliate_eligible": true,
+    "verified_specs": [
+      "Lõi trong bằng Inox 316 an toàn cho đồ uống nóng và lạnh",
+      "Dung tích lớn 800ml phù hợp mang đi học, đi làm, tập thể thao",
+      "Nắp bình tích hợp cảm biến chạm hiển thị nhiệt độ nước",
+      "Thiết kế 2 kiểu uống: ống hút silicone và miệng uống trực tiếp, có quai xách"
+    ],
+    "forbidden_claims": [
+      "Không nói giữ đá 7 ngày không tan",
+      "Không tự bịa tính năng đun sôi nước"
+    ],
+    "image_Gallery": [
+      {
+        "id": "bottle_main",
+        "label": "Góc 1: Bình giữ nhiệt 800ml sơn tĩnh điện kèm quai xách",
+        "caption_tag": "Dung tích 800ml kèm quai xách tiện lợi",
+        "theme_color": "#1e293b",
+        "accent_color": "#fb923c",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.18
+        },
+        "svg_type": "thermos_main",
+        "url": "/assets/real/bottle_1.jpg"
+      },
+      {
+        "id": "bottle_led",
+        "label": "Góc 2: Nắp cảm ứng chạm báo nhiệt độ nước tức thì",
+        "caption_tag": "Chạm nhẹ nắp bình xem ngay nhiệt độ",
+        "theme_color": "#31102f",
+        "accent_color": "#f472b6",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.35,
+          "zoom": 1.32
+        },
+        "svg_type": "thermos_led",
+        "url": "/assets/real/bottle_2.jpg"
+      },
+      {
+        "id": "bottle_liner",
+        "label": "Góc 3: Lõi Inox 316 giữ nóng lạnh 6-12 tiếng",
+        "caption_tag": "Lõi Inox 316 an toàn, dễ vệ sinh",
+        "theme_color": "#0f172a",
+        "accent_color": "#38bdf8",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.55,
+          "zoom": 1.25
+        },
+        "svg_type": "thermos_liner",
+        "url": "/assets/real/bottle_3.jpg"
+      },
+      {
+        "id": "bottle_lid",
+        "label": "Góc 4: Nắp đôi 2 kiểu uống kèm gioăng chống tràn",
+        "caption_tag": "Gioăng kín chống rò nước khi bỏ balo",
+        "theme_color": "#064e3b",
+        "accent_color": "#34d399",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.45,
+          "zoom": 1.2
+        },
+        "svg_type": "thermos_lid",
+        "url": "/assets/real/bottle_4.jpg"
+      }
+    ]
+  },
+  {
+    "external_id": "KALO-VN-492811",
+    "source": "kalodata_vn",
+    "kalodata_rank": 5,
+    "title": "Giá Đỡ Điện Thoại & Tablet Hợp Kim Nhôm Xoay 360 Độ Gấp Gọn Để Bàn",
+    "category": "Phụ kiện Máy tính & Văn phòng",
+    "shop_name": "Góc Làm Việc Tối Giản",
+    "price_vnd": 75000,
+    "original_price_vnd": 129000,
+    "sales_7d": 11300,
+    "gmv_7d_vnd": 847500000,
+    "growth_7d_pct": 76.8,
+    "rating": 4.9,
+    "review_count": 3890,
+    "commission_rate": 22.0,
+    "creator_videos_7d": 164,
+    "metrics_date": "2026-11-07",
+    "affiliate_url": "https://kalodata.com/product/detail?id=KALO-VN-492811",
+    "asset_rights_verified": true,
+    "specifications_verified": true,
+    "affiliate_eligible": true,
+    "verified_specs": [
+      "Chất liệu hợp kim nhôm dày dặn, trục xoay cơ học phát tiếng click vui tai",
+      "Chân đế xoay tròn 360 độ, gập chỉnh góc nghiêng linh hoạt",
+      "Đệm silicone chống trượt và chống trầy mặt lưng thiết bị",
+      "Gấp phẳng bỏ túi gọn gàng, chịu tải điện thoại và máy tính bảng tới 11 inch"
+    ],
+    "forbidden_claims": [
+      "Không nói đỡ được laptop 16 inch nặng 2.5kg"
+    ],
+    "image_Gallery": [
+      {
+        "id": "stand_main",
+        "label": "Góc 1: Giá đỡ hợp kim nhôm xoay 360 độ trên bàn làm việc",
+        "caption_tag": "Hợp kim nhôm xoay 360° chắc chắn",
+        "theme_color": "#1e293b",
+        "accent_color": "#60a5fa",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "svg_type": "stand_main",
+        "url": "/assets/real/stand_1.jpg"
+      },
+      {
+        "id": "stand_base",
+        "label": "Góc 2: Trục xoay cơ học 360 độ kèm đệm chống trượt",
+        "caption_tag": "Trục xoay 360° linh hoạt mọi góc nhìn",
+        "theme_color": "#0f172a",
+        "accent_color": "#c084fc",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.65,
+          "zoom": 1.3
+        },
+        "svg_type": "stand_base",
+        "url": "/assets/real/stand_2.jpg"
+      },
+      {
+        "id": "stand_fold",
+        "label": "Góc 3: Gấp gọn mỏng nhẹ dễ dàng mang đi cà phê, văn phòng",
+        "caption_tag": "Gấp phẳng gọn gàng bỏ vừa túi xách",
+        "theme_color": "#1e1b4b",
+        "accent_color": "#38bdf8",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.22
+        },
+        "svg_type": "stand_fold",
+        "url": "/assets/real/stand_3.jpg"
+      },
+      {
+        "id": "stand_pad",
+        "label": "Góc 4: Khe cắm sạc tiện lợi & đệm silicone bảo vệ máy",
+        "caption_tag": "Khe cắm sạc tiện lợi - Hoa hồng 22%",
+        "theme_color": "#14532d",
+        "accent_color": "#4ade80",
+        "focus_zone": {
+          "x": 0.5,
+          "y": 0.45,
+          "zoom": 1.18
+        },
+        "svg_type": "stand_pad",
+        "url": "/assets/real/stand_4.jpg"
+      }
+    ]
+  }
+]
