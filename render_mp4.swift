@@ -24,9 +24,15 @@ func loadCGImage(path: String) -> CGImage? {
     return CGImageSourceCreateImageAtIndex(src, 0, nil)
 }
 
+struct VideoBundle {
+    let sharp: CGImage
+    let blur: CGImage?
+}
+
 func drawProHandheldShot(
     _ ctx: CGContext,
     img: CGImage,
+    blurImg: CGImage? = nil,
     width: CGFloat,
     height: CGFloat,
     motion: String,
@@ -41,24 +47,30 @@ func drawProHandheldShot(
     let imgAspect = CGFloat(img.width) / CGFloat(max(1, img.height))
 
     if isRealVideoFrame {
-        // Real video frame: fill 9:16 canvas with 1.38x crop and shift upward slightly so the bottom 18% (where source Shorts often have subtitles/watermarks) is cropped out
-        var cropZoom: CGFloat = 1.38
+        ctx.interpolationQuality = .high
+        ctx.setShouldAntialias(true)
+
+        let smoothT = CGFloat(0.5 - 0.5 * cos(progress * Double.pi))
+
+        // === 100% VIDEO DỌC TOÀN MÀN HÌNH CHUẨN TIKTOK (9:16) ===
+        // Tràn màn hình 100%, không viền đen, không mờ dải ngang giả tạo kiểu quảng cáo
+        // Tập trung toàn bộ vào đôi tay thao tác & chi tiết sản phẩm thực tế
+        var cropZoom: CGFloat = 1.05
         var panX: CGFloat = 0.0
         var panY: CGFloat = 0.0
-        let smoothT = CGFloat(0.5 - 0.5 * cos(progress * Double.pi))
 
         switch motion {
         case "zoom_out":
-            cropZoom = 1.44 - smoothT * 0.08
-            panY = (0.5 - smoothT) * 28.0
+            cropZoom = 1.08 - smoothT * 0.04
+            panY = (0.5 - smoothT) * 10.0
         case "pan_detail":
-            cropZoom = 1.40
-            panX = (0.5 - smoothT) * 48.0
+            cropZoom = 1.06
+            panX = (0.5 - smoothT) * 14.0
         case "focus_center":
-            cropZoom = 1.38 + sin(smoothT * CGFloat.pi) * 0.05
+            cropZoom = 1.05 + sin(smoothT * CGFloat.pi) * 0.02
         default: // zoom_in
-            cropZoom = 1.35 + smoothT * 0.10
-            panY = (smoothT - 0.5) * 25.0
+            cropZoom = 1.05 + smoothT * 0.04
+            panY = (smoothT - 0.5) * 10.0
         }
 
         var drawW = width * cropZoom
@@ -67,11 +79,9 @@ func drawProHandheldShot(
             drawH = height * cropZoom
             drawW = drawH * imgAspect
         }
-        // Shift Y downward in CoreGraphics (bottom-left origin) by 6% of drawH so the bottom 18% of the source video is pushed off the bottom edge
-        let verticalBias = -drawH * 0.06
         let rect = CGRect(
             x: (width - drawW) / 2.0 + panX,
-            y: (height - drawH) / 2.0 + verticalBias + panY,
+            y: (height - drawH) / 2.0 + panY,
             width: drawW,
             height: drawH
         )
@@ -149,6 +159,7 @@ func createCleanPixelBuffer(
     width: Int,
     height: Int,
     currentImage: CGImage?,
+    currentBlurImage: CGImage? = nil,
     nextImage: CGImage?,
     currentMotion: String,
     nextMotion: String,
@@ -188,6 +199,7 @@ func createCleanPixelBuffer(
         drawProHandheldShot(
             ctx,
             img: img,
+            blurImg: currentBlurImage,
             width: W,
             height: H,
             motion: currentMotion,
@@ -202,6 +214,7 @@ func createCleanPixelBuffer(
         drawProHandheldShot(
             ctx,
             img: nxt,
+            blurImg: nil,
             width: W,
             height: H,
             motion: nextMotion,
@@ -221,7 +234,7 @@ class FastVideoClipSampler {
     var reader: AVAssetReader?
     var output: AVAssetReaderTrackOutput?
     var currentStartSec: Double = 0.0
-    var lastFrame: CGImage?
+    var lastBundle: VideoBundle?
     let ciContext = CIContext(options: [.useSoftwareRenderer: false])
 
     init?(path: String) {
@@ -260,26 +273,38 @@ class FastVideoClipSampler {
         }
     }
 
-    func nextCGImage() -> CGImage? {
-        guard let out = output, let r = reader else { return lastFrame }
+    private func processSample(_ pb: CVPixelBuffer) -> VideoBundle? {
+        let ciImg = CIImage(cvPixelBuffer: pb)
+        let isLandscape = ciImg.extent.width > ciImg.extent.height * 1.05
+
+        let sharpen = CIFilter(name: "CISharpenLuminance", parameters: [
+            kCIInputImageKey: ciImg,
+            kCIInputSharpnessKey: 0.70
+        ])
+        let sharpCI = sharpen?.outputImage ?? ciImg
+        guard let sharpCG = ciContext.createCGImage(sharpCI, from: ciImg.extent) else { return lastBundle }
+
+        var blurCG: CGImage? = nil
+        if isLandscape {
+            let blur = ciImg.clampedToExtent().applyingGaussianBlur(sigma: 40.0).cropped(to: ciImg.extent)
+            blurCG = ciContext.createCGImage(blur, from: ciImg.extent)
+        }
+        let b = VideoBundle(sharp: sharpCG, blur: blurCG)
+        lastBundle = b
+        return b
+    }
+
+    func nextBundle() -> VideoBundle? {
+        guard let out = output, let r = reader else { return lastBundle }
         if r.status == .reading, let sample = out.copyNextSampleBuffer(), let pb = CMSampleBufferGetImageBuffer(sample) {
-            let ciImg = CIImage(cvPixelBuffer: pb)
-            if let cg = ciContext.createCGImage(ciImg, from: ciImg.extent) {
-                lastFrame = cg
-                return cg
-            }
+            return processSample(pb)
         } else if r.status == .completed {
-            // Loop back if video clip finishes before scene ends
             seek(to: 1.0)
             if let out2 = output, let sample = out2.copyNextSampleBuffer(), let pb = CMSampleBufferGetImageBuffer(sample) {
-                let ciImg = CIImage(cvPixelBuffer: pb)
-                if let cg = ciContext.createCGImage(ciImg, from: ciImg.extent) {
-                    lastFrame = cg
-                    return cg
-                }
+                return processSample(pb)
             }
         }
-        return lastFrame
+        return lastBundle
     }
 }
 
@@ -303,7 +328,7 @@ func renderVideo(manifestPath: String) throws {
         AVVideoWidthKey: width,
         AVVideoHeightKey: height,
         AVVideoCompressionPropertiesKey: [
-            AVVideoAverageBitRateKey: 5_500_000,
+            AVVideoAverageBitRateKey: 9_500_000,
             AVVideoProfileLevelKey: AVVideoProfileLevelH264HighAutoLevel
         ]
     ]
@@ -372,9 +397,10 @@ func renderVideo(manifestPath: String) throws {
             let progress = Double(f) / Double(max(1, sceneFrames - 1))
             let globalTimeSec = Double(globalFrameIdx) / Double(fps)
 
-            let videoFrameCG = activeSampler?.nextCGImage()
-            let currentImg = videoFrameCG ?? fallbackImg
-            let isRealVideo = (videoFrameCG != nil)
+            let bundle = activeSampler?.nextBundle()
+            let currentImg = bundle?.sharp ?? fallbackImg
+            let currentBlur = bundle?.blur
+            let isRealVideo = (bundle != nil)
 
             var crossfadeAlpha = 0.0
             if !isRealVideo && nextFallbackImg != nil && f >= (sceneFrames - fadeFrames) {
@@ -386,6 +412,7 @@ func renderVideo(manifestPath: String) throws {
                 width: width,
                 height: height,
                 currentImage: currentImg,
+                currentBlurImage: currentBlur,
                 nextImage: nextFallbackImg,
                 currentMotion: scene.motion,
                 nextMotion: nextMotion,

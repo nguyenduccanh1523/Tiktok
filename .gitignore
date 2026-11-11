@@ -44,6 +44,7 @@ wheels/
 video_renderer
 adam_pitch
 frame_inspect
+inspect_video_content
 *.o
 *.obj
 *.dylib

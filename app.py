@@ -703,9 +703,9 @@ def generate_real_mp4_job(
     real_video_path = resolve_product_video_path(product, v_idx)
 
     # Tính toán thời lượng clip nguồn và độ dịch chuyển video_start thông minh
-    # Bỏ qua đoạn mở hộp/cắt băng dính ban đầu (skip 12% - 18% đầu) để vào NGAY cảnh cầm hàng thật
+    # Bỏ qua đoạn mở đầu / giới thiệu / chào hỏi ban đầu (skip 18% đầu) để vào NGAY cảnh đôi tay cầm sản phẩm thật
     src_video_dur = get_video_duration(Path(real_video_path)) if (real_video_path and Path(real_video_path).exists()) else 20.0
-    safe_lead_sec = max(1.5, min(6.0, src_video_dur * 0.15))
+    safe_lead_sec = max(2.0, min(7.5, src_video_dur * 0.18))
     usable_video_span = max(4.0, src_video_dur - safe_lead_sec - 1.5)
     scene_step = usable_video_span / max(1, len(scenes))
 
@@ -718,7 +718,8 @@ def generate_real_mp4_job(
 
         # Tính toán điểm cắt video động vào giữa lúc người dùng thao tác / review sản phẩm thực tế
         if real_video_path and Path(real_video_path).exists():
-            dyn_v_start = round(safe_lead_sec + scene_step * s_i, 2)
+            variant_offset = (v_idx - 1) * (usable_video_span * 0.15)
+            dyn_v_start = round(safe_lead_sec + (variant_offset + scene_step * s_i) % usable_video_span, 2)
             dyn_v_start = min(dyn_v_start, max(0.0, src_video_dur - scene_dur - 0.5))
             v_start = dyn_v_start
         else:
@@ -1151,7 +1152,9 @@ class StudioRequestHandler(SimpleHTTPRequestHandler):
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Accept-Ranges", "bytes")
-        self.send_header("Cache-Control", "no-cache")
+        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
         self.end_headers()
         self.wfile.write(data)
 
