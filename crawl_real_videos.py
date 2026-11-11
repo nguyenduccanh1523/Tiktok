@@ -104,6 +104,8 @@ def simplify_product_query(raw_title: str) -> list[str]:
 
     title_lower = cleaned.lower()
     raw_lower = raw_title.lower()
+    is_wall_charger = any(k in title_lower for k in ("củ sạc", "cốc sạc", "bộ sạc", "adapter", "adaptor", "củ sạc nhanh", "cốc sạc nhanh"))
+    is_powerbank = any(k in title_lower for k in ("sạc dự phòng", "pin dự phòng", "power bank", "powerbank", "pin sạc dự phòng"))
     is_wired_earphone = any(k in raw_lower for k in ("tai nghe dây", "có dây", "tai nghe có dây", "dây nhét tai", "cắm dây", "jack 3.5"))
     is_book_or_album = any(k in title_lower for k in ("scrapbook", "album ảnh", "sổ dán ảnh", "sổ dán", "sổ kỷ yếu", "quyển sách", "cuốn sách", "vở vẽ"))
     is_bottle = any(k in title_lower for k in ("bình", "ly", "cốc", "bình giữ nhiệt", "ly giữ nhiệt", "cốc giữ nhiệt", "thermos", "tumbler"))
@@ -111,7 +113,27 @@ def simplify_product_query(raw_title: str) -> list[str]:
     is_fashion = any(k in title_lower for k in ("áo", "quần", "váy", "đầm", "cadigan", "khoác", "sơ mi", "set đồ", "set áo"))
 
     queries = []
-    if is_wired_earphone:
+    if is_wall_charger:
+        # Đặc trị củ sạc/cốc sạc cắm tường: Bắt buộc kèm từ 'củ sạc' hoặc 'cốc sạc' để KHÔNG nhầm sang pin sạc dự phòng
+        if brand_model_str:
+            queries.append(f"trên tay củ sạc {brand_model_str}")
+            queries.append(f"cận cảnh củ sạc {brand_model_str}")
+            queries.append(f"củ sạc {brand_model_str} trên tay")
+            queries.append(f"củ sạc {brand_model_str}")
+            queries.append(f"trên tay cốc sạc {brand_model_str}")
+        queries.append(f"trên tay củ sạc {first_seg}")
+        queries.append(f"cận cảnh củ sạc {first_seg}")
+        queries.append(f"củ sạc {first_seg} trên tay")
+    elif is_powerbank:
+        # Đặc trị sạc dự phòng: Bắt buộc kèm từ 'sạc dự phòng' hoặc 'pin dự phòng'
+        if brand_model_str:
+            queries.append(f"trên tay sạc dự phòng {brand_model_str}")
+            queries.append(f"cận cảnh sạc dự phòng {brand_model_str}")
+            queries.append(f"sạc dự phòng {brand_model_str} trên tay")
+            queries.append(f"sạc dự phòng {brand_model_str}")
+        queries.append(f"trên tay sạc dự phòng {first_seg}")
+        queries.append(f"cận cảnh sạc dự phòng {first_seg}")
+    elif is_wired_earphone:
         # Đặc trị tai nghe có dây: Bắt buộc kèm từ 'có dây' hoặc 'dây' để tránh nhầm sang tai nghe bluetooth
         if brand_model_str:
             queries.append(f"trên tay tai nghe có dây {brand_model_str}")
@@ -193,7 +215,17 @@ def find_short_video_ids(query: str, max_ids: int = 12) -> list[str]:
 
     # Tìm cặp (videoId, title) để ưu tiên video trên tay / cận cảnh và loại bỏ vlog/quay người
     matches = re.findall(r'"videoId":"([a-zA-Z0-9_-]{11})".*?"title":\{"runs":\[\{"text":"(.*?)"\}\]', html)
+    q_low = query.lower()
     bad_kw = {"vlog", "tâm sự", "chuyện trò", "hỏi đáp", "q&a", "reaction", "phỏng vấn", "podcast", "chém gió", "troll", "hài hước", "kể chuyện"}
+    if not any(k in q_low for k in ("dán", "skin", "ppf")):
+        bad_kw.update({"dán ppf", "dán skin", "dán màn", "dán decal", "miếng dán", "dán viền", "ai chê"})
+    if any(k in q_low for k in ("củ sạc", "cốc sạc", "bộ sạc")):
+        bad_kw.update({"dự phòng", "power bank", "powerbank", "pin dự phòng"})
+    if any(k in q_low for k in ("dự phòng", "power bank", "powerbank")):
+        bad_kw.update({"củ sạc", "cốc sạc"})
+    if "có dây" in q_low or "dây" in q_low:
+        bad_kw.update({"không dây", "bluetooth", "tws", "true wireless"})
+
     good_ids = []
     other_ids = []
     seen = set()
@@ -252,7 +284,7 @@ def download_single_short_id(vid: str, out_path: Path, verify_hands_on: bool = T
         YT_DLP,
         "--js-runtimes", "node:/opt/homebrew/bin/node",
         "-S", "res:1080,vcodec:h264,ext:mp4",
-        "-f", "bv*[vcodec^=avc1][height>=720]/bv*[vcodec^=avc1]/137/136/135/bestvideo[ext=mp4]/b[vcodec^=avc1]/18/best",
+        "-f", "bv*[vcodec^=avc1][height>=1080]/299/270/137/312/bv*[vcodec^=avc1][height>=720]/298/232/136/311/bv*[height>=720]/bv*[vcodec^=avc1]/18/best",
         "--match-filter", "duration <= 180 & duration >= 7",
         "--no-playlist",
         "-o", str(out_path),
